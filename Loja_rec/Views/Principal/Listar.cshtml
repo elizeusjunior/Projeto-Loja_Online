@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Loja_rec.Models.Produto>
+@{
+    ViewBag.Title = "Listar";
+}
+@TempData["msg"]
+
+<h2>Listar</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.Id)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Descricao)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Preco)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Quantidade)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Sku)</th>
+            <th scope="col">Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@Html.DisplayFor(id => item.Id)</th>
+                <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+                <td>@Html.DisplayFor(modelItem => item.Preco)</td>
+                <td>@Html.DisplayFor(modelItem => item.Quantidade)</td>
+                <td>@Html.DisplayFor(modelItem => item.Sku)</td>
+                <td>
+                    @Html.ActionLink("Excluir", "Excluir", new { id = item.Id })
+                    @Html.ActionLink("Editar", "Editar", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
